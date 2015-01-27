@@ -18,7 +18,8 @@
 				afterOpen: null,
 				afterClose: null,
 				loopAtEnd: false,
-				autoplayVideos: false
+				autoplayVideos: false,
+				downloadText : 'Download'
 			},
 
 			plugin = this,
@@ -37,7 +38,10 @@
 					<div id="swipebox-container">\
 						<div id="swipebox-slider"></div>\
 						<div id="swipebox-top-bar">\
-							<div id="swipebox-title"></div>\
+							<div id="swipebox-title-bar">\
+								<div id="swipebox-title"></div>\
+								<a id="swipebox-download"></a>\
+							</div>\
 						</div>\
 						<div id="swipebox-bottom-bar">\
 							<div id="swipebox-arrows">\
@@ -109,7 +113,8 @@
 					$elem.each( function() {
 
 						var title = null,
-							href = null;
+							href = null,
+							datahref = null;
 
 						if ( $( this ).attr( 'title' ) ) {
 							title = $( this ).attr( 'title' );
@@ -120,7 +125,12 @@
 							href = $( this ).attr( 'href' );
 						}
 
+						if ( $( this ).attr( 'data-href' ) ) {
+							href = $( this ).attr( 'data-href' );
+						}
+
 						elements.push( {
+							datahref: datahref,
 							href: href,
 							title: title
 						} );
@@ -607,6 +617,7 @@
 				$( '#swipebox-slider .slide' ).removeClass( 'current' );
 				$( '#swipebox-slider .slide' ).eq( index ).addClass( 'current' );
 				this.setTitle( index );
+				this.setDownload( index );
 
 				if ( isFirst ) {
 					slider.fadeIn();
@@ -706,6 +717,26 @@
 					$( '#swipebox-title' ).append( title );
 				} else {
 					$( '#swipebox-top-bar' ).hide();
+				}
+			},
+
+			/**
+			 * Set link data-href attribute as download option
+			 */
+			setDownload : function ( index ) {
+				var datahref = null;
+
+				$( '#swipebox-download' ).empty();
+
+				if ( elements[ index ] !== undefined ) {
+					datahref = elements[ index ].datahref;
+				}
+
+				if ( datahref ) {				
+					$( '#swipebox-download' ).append( plugin.settings.downloadText );
+					$( '#swipebox-download' ).attr( "href", datahref );
+				} else {
+					$( '#swipebox-download' ).hide();
 				}
 			},
 
