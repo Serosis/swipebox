@@ -117,10 +117,20 @@ html.swipebox-html.swipebox-touch {
   transform: translate3d(0, 50px, 0);
 }
 
-#swipebox-title {
+#swipebox-title-bar {
   display: block;
-  width: 100%;
-  text-align: center;
+  margin: 0 auto;
+  width: 50%;
+  height: 50px;
+}
+
+#swipebox-title {
+	float: left;
+}
+
+#swipebox-download {
+	text-decoration:none;
+	float: right;
 }
 
 #swipebox-prev,
