@@ -7,7 +7,7 @@ A touchable jQuery lightbox.
 
 ##What is Swipebox ?
 
-Swipebox is a jQuery "lightbox" plugin for desktop, mobile and tablet.
+Swipebox is a jQuery "lightbox" plugin for desktop and mobile.
 
 ##Features
 
@@ -19,7 +19,7 @@ Swipebox is a jQuery "lightbox" plugin for desktop, mobile and tablet.
 
 ###Compatibility
 
-Chrome, Safari, Firefox, Opera, IE9+, IOS4+, Android, windows phone.
+Chrome, Safari, Firefox, Opera, IE9+, IOS4+, Android, and Windows phone.
 
 ##Usage
 
@@ -28,7 +28,7 @@ Chrome, Safari, Firefox, Opera, IE9+, IOS4+, Android, windows phone.
 Include jquery and the swipebox script in your head tags or right before your body closing tag.
 
 ```html
-<script src="lib/jquery-1.9.0.js"></script>
+<script src="lib/jjquery-2.1.3.js"></script>
 <script src="src/js/jquery.swipebox.js"></script>
 ```
 
@@ -42,10 +42,11 @@ Include the swipebox CSS style in your head tags.
 
 ###HTML
 
-Use a specific class for your links and use the title attribute as caption.
+Use a specific class for your links, use the title attribute as caption, and use the data-href 
+attribute if you would like to add a download link to the title bar.
 
 ```html
-<a href="big/image.jpg" class="swipebox" title="My Caption">
+<a href="big/image.jpg" class="swipebox" title="My Caption" data-href="original/image.jpg">
 ```
 
 ###Fire the plugin
@@ -68,7 +69,8 @@ beforeOpen: function(){} , // called before opening
 afterOpen: null, // called after opening
 afterClose: function(){}, // called after closing
 loopAtEnd: false, // true will return to the first image after the last image is reached
-autoplayVideos: false // true will autoplay Youtube and Vimeo videos
+autoplayVideos: false, // true will autoplay Youtube and Vimeo videos
+downloadText: 'Download'
 ```
 
 ###Pull Requests
