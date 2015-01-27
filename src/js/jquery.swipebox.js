@@ -126,7 +126,7 @@
 						}
 
 						if ( $( this ).attr( 'data-href' ) ) {
-							href = $( this ).attr( 'data-href' );
+							datahref = $( this ).attr( 'data-href' );
 						}
 
 						elements.push( {
